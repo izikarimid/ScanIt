@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dimir.scanit.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+        <ImageButton
+            android:id="@+id/btnScan"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="35dp"
+            android:background="#ffffff"
+            android:src="@drawable/bcbig" />
+
+        <ImageButton
+            android:id="@+id/btnList"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/btnScan"
+            android:layout_marginEnd="21dp"
+            android:layout_marginRight="21dp"
+            android:background="#ffffff"
+            android:src="@drawable/todo" />
+
+        <ImageButton
+            android:id="@+id/btnSales"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/btnScan"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="80dp"
+            android:background="#ffffff"
+            android:src="@drawable/slebig" />
+
+        <ImageButton
+            android:id="@+id/btnpple"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignLeft="@+id/btnList"
+            android:layout_alignStart="@+id/btnList"
+            android:layout_alignTop="@+id/btnSales"
+            android:background="#ffffff"
+            android:src="@drawable/pp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
