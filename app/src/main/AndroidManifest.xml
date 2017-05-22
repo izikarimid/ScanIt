@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dimir.scanit">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".Controller"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -60,6 +63,23 @@
         <activity
             android:name=".Community"
             android:label="@string/title_activity_community"
+            android:parentActivityName=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.dimir.scanit.Home" />
+        </activity>
+        <activity
+            android:name=".Product"
+            android:label="@string/title_activity_product"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Item"
+            android:label="@string/title_activity_item"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Cart"
+            android:label="@string/title_activity_cart"
             android:parentActivityName=".Home"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

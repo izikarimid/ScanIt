@@ -30,9 +30,10 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-public class List extends ListActivity {
+public class ShoppingList extends ListActivity {
 
 
     private static final int ACTIVITY_CREATE=0;
@@ -78,7 +79,7 @@ public class List extends ListActivity {
         switch (item.getItemId()) {
             case R.id.menu_about:
 
-                android.app.AlertDialog.Builder dialog = new android.app.AlertDialog.Builder(List.this);
+                android.app.AlertDialog.Builder dialog = new android.app.AlertDialog.Builder(ShoppingList.this);
                 dialog.setTitle("About");
                 dialog.setMessage("Hello! I'm Kizi, the creator of this application. This application is created based on learning."
 

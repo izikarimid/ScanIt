@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ListActivity=new Intent(getActivity(),List.class);
+                Intent ListActivity=new Intent(getActivity(),ShoppingList.class);
                 startActivity(ListActivity);
 
                 Toast.makeText(getActivity(), "Shopping List", Toast.LENGTH_LONG).show();

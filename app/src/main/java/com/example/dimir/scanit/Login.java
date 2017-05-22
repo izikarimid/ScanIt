@@ -1,6 +1,8 @@
 package com.example.dimir.scanit;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,11 +15,31 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class Login extends AppCompatActivity {
 
     EditText txtPasswordL,txtEmailL,txtEmailR,txtPasswordR,txtRetypePassword;
     TextView txtCreateAccount,txtLogin;
     Button btnSignin,btnReg;
+
+    //Variables
+
+    /*private ProgressDialog pDialog;
+
+    // JSON Response node names
+    private static String KEY_SUCCESS = "success";
+
+
+    private static String url_login = "http://tutishem.com/peter/post/login.php";
+
+    // Alert Dialog Manager
+    AlertDialogManager alert = new AlertDialogManager();*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,74 +108,87 @@ public class Login extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-  /*  private class LoginTask extends AsyncTask<String, Void, String> {
 
-        private Context mContext;
-        private ProgressDialog dialog;
-
-        public LoginTask(Login activity) {
-            dialog = new ProgressDialog(activity);
-        }
-
-        public LoginTask(Context context){
-            this.mContext = context;
-        }
+    /**
+     * Async task class to get json by making HTTP call
+     * *//*
+    private class LoginUser extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
-            dialog.setMessage("Loading, please wait...");
-            dialog.show();
+            super.onPreExecute();
+            // Showing progress dialog
+            pDialog = new ProgressDialog(Login.this);
+            pDialog.setMessage("Please wait...");
+            pDialog.setCancelable(false);
+            pDialog.show();
+
         }
 
         @Override
-        protected String doInBackground(String... strings) {
-            String resp = "UNDEFINED";
+        protected Void doInBackground(Void... arg0) {
 
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("username", Username));
+            params.add(new BasicNameValuePair("password", Password));
+
+            // Creating service handler class instance
+            ServiceHandler sh = new ServiceHandler();
+
+            // Making a request to url and getting response
+            String jsonStr = sh.makeServiceCall(url_login, ServiceHandler.GET, params);
+            JSONObject json = null;
             try {
-                URL url = new URL("http://strathiot.mybluemix.net/api/iotUsers/count?where={\"email\":\"" + strings[0] + "\",\"password\":\"" + strings[1] + "\"}" );
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                json = new JSONObject(jsonStr);
+            } catch (JSONException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            //shows the response that we got from the http request on the logcat
+            Log.d("Response: ", "> " + jsonStr);
 
-                InputStream stream = new BufferedInputStream(urlConnection.getInputStream());
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
-                StringBuilder builder = new StringBuilder();
+            // check for login response
+            try {
+                if (json.getString(KEY_SUCCESS) != null) {
+                    // loginErrorMsg.setText("");
+                    String res = json.getString(KEY_SUCCESS);
 
-                String inputString;
-                while ((inputString = bufferedReader.readLine()) != null) {
-                    builder.append(inputString);
+                    if (Integer.parseInt(res) == 1) {
+                        // user successfully logged in
+
+
+                        // Launch Home Screen
+                        Intent intCategory = new Intent(
+                                getApplicationContext(), Home.class);
+                        intCategory.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intCategory);
+
+                        finish();
+                    } else {
+                        // Error in login
+                        runOnUiThread(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                // loginErrorMsg.setText("Incorrect PhoneNumber/Password");
+                                alert.showAlertDialog(
+                                        Login.this,
+                                        "Login Error",
+                                        "Incorrect Username/Password. Please Try Again!",
+                                        false);
+                            }
+                        });
+                    }
+                } else {
+                    alert.showAlertDialog(Login.this, "Login Error",
+                            "Failed to Login. Please Try Again!", false);
                 }
-
-                JSONObject response = new JSONObject(builder.toString());
-                resp = response.getString("count");
-
-                if (resp.equals("1"))
-                {
-                    startActivity(new Intent(Login.this,Home.class));
-                }
-
-                urlConnection.disconnect();
-            } catch (IOException | JSONException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
-            return resp;
-        }
-
-        @Override
-        protected void onPostExecute(String resp) {
-            //  txtUsername.setText(temp);
-            if (dialog.isShowing()) {
-                dialog.dismiss();
-
-                if (resp.equals("1"))
-                {
-                    startActivity(new Intent(Login.this,Home.class));
-                }
-
-                else
-                {
-                    Toast.makeText(mContext, "Incorrect details. Please retry", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-    }*/
-}
-
+            // }
+            // });
+            // thread.start();
+            return null;
+        }*/
+    }

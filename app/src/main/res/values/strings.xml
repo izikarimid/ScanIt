@@ -25,6 +25,9 @@
     <string name="blank">%1$s</string>
     <string name="title_activity_sales">Sales</string>
     <string name="title_activity_community">Community</string>
+    <string name="title_activity_product">Product</string>
+    <string name="title_activity_item">Item</string>
+    <string name="title_activity_cart">Cart</string>
 
 
 </resources>

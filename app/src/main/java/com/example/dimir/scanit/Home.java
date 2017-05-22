@@ -83,7 +83,12 @@ public class Home extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            // Handle the camera action
+
+            /*ProfileFragment fragment=new ProfileFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentcontainer,fragment);
+            fragmentTransaction.commit();*/
+
         } else if (id == R.id.nav_history) {
 
         } else if (id == R.id.nav_transaction) {
