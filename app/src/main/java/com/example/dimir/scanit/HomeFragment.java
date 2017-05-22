@@ -60,6 +60,28 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getActivity(), "Shopping List", Toast.LENGTH_LONG).show();
             }
         });
+
+        btnSales= (ImageButton) v.findViewById(R.id.btnSales);
+        btnSales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent SaleActivity=new Intent(getActivity(),Sales.class);
+                startActivity(SaleActivity);
+
+                Toast.makeText(getActivity(), "Sales and Promotions", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        btnpple= (ImageButton) v.findViewById(R.id.btnpple);
+        btnpple.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent PpleActivity=new Intent(getActivity(),Community.class);
+                startActivity(PpleActivity);
+
+                Toast.makeText(getActivity(), "Community", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }

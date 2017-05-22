@@ -44,6 +44,28 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.dimir.scanit.Home" />
         </activity>
+        <activity
+            android:name=".NoteEdit"
+            android:label="@string/title_activity_note_edit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales"
+            android:label="@string/title_activity_sales"
+            android:parentActivityName=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.dimir.scanit.Home" />
+        </activity>
+        <activity
+            android:name=".Community"
+            android:label="@string/title_activity_community"
+            android:parentActivityName=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.dimir.scanit.Home" />
+        </activity>
     </application>
 
 </manifest>
